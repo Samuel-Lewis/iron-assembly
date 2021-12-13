@@ -1,6 +1,6 @@
 {
-  "short_name": "TODO: short_name",
-  "name": "TODO: long_name",
+  "short_name": "iron-assembly",
+  "name": "iron-assembly",
   "icons": [],
   "start_url": ".",
   "display": "standalone",
