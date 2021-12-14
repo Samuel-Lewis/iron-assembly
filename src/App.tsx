@@ -1,19 +1,42 @@
 import "./App.less";
+import {
+  Layout,
+  Menu
+} from "antd";
 import React from "react";
 import {
   Link,
   Outlet
 } from "react-router-dom";
 
+const { Header, Content, Footer } = Layout;
+
 function App() {
   return (
-    <div>
-      <h1>Chicken little</h1>
-      <Link to="/">Home</Link>
-      <Link to="/members">Members</Link>
+    <Layout className="app">
+      <Header>
+        <Link to="/">
+          <img
+            className="logo"
+            src={`${process.env.PUBLIC_URL}/forge_cutout.png`}
+            alt=""
+          />
+        </Link>
+        <Menu theme="dark" mode="horizontal" selectable={false}>
+          <Menu.Item key="/">
+            <Link to="/">Home</Link>
+          </Menu.Item>
+          <Menu.Item key="/members">
+            <Link to="/members">Members</Link>
+          </Menu.Item>
+        </Menu>
+      </Header>
+      <Content className="content">
+        <Outlet />
+      </Content>
 
-      <Outlet />
-    </div>
+      <Footer className="footer">Iron Assembly 2021</Footer>
+    </Layout>
   );
 }
 

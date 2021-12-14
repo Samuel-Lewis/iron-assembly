@@ -5,6 +5,7 @@ import {
   useParams
 } from "react-router-dom";
 import { getUser } from "../content";
+import { YouTubeList } from "../SocialComponent/YouTubeList";
 
 export const ProfilePage = () => {
   let { username } = useParams();
@@ -16,26 +17,19 @@ export const ProfilePage = () => {
       description: "Sorry, the user you were looking for could not be found.",
     });
 
-  if (!username) {
+  const user = getUser(username ?? "");
+  if (!username || !user) {
     userNotFound();
     navigate("/members");
     return null;
   }
 
-  const user = getUser(username);
-  if (!user) {
-    userNotFound();
-    navigate("/members");
-    return null;
-  }
+  const { youtube } = user.socials ?? {};
 
   return (
     <div>
       <h2>User: {username}</h2>
-      <img
-        src={`https://crafatar.com/renders/body/${user.uuid}?overlay=true`}
-        alt={`${username}'s Minecraft avatar`}
-      />
+      {youtube && <YouTubeList userId={youtube.id} />}
     </div>
   );
 };
