@@ -1,1 +1,1 @@
-declare module "cache";
+declare module "react-twitch-embed-video";

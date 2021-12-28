@@ -11,7 +11,7 @@ export type YouTubeCardProps = {
 };
 
 export const YouTubeCard: React.FC<YouTubeCardProps> = ({ video, channel }) => {
-  const { title, description, thumbnails, channelTitle } = video.snippet;
+  const { title, description, thumbnails } = video.snippet;
 
   const link = `https://www.youtube.com/watch?v=${video.contentDetails.videoId}`;
   const avatar = channel?.snippet.thumbnails.high.url;

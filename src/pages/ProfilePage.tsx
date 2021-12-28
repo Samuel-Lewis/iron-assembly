@@ -1,13 +1,24 @@
-import { notification, Typography } from "antd";
+import {
+  notification,
+  Typography,
+  Divider,
+  Row,
+  Col,
+  Avatar,
+  Space,
+} from "antd";
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { YoutubeChannel } from "youtube.ts";
 import { getUser } from "../content";
 import { fetchChannelData, fetchLatestVideos } from "../content/youtube";
 import { VideoWithChannel } from "../content/youtube/types";
+import { SocialBadges } from "../SocialComponent/SocialBadges";
+import { TwitchPage } from "../SocialComponent/TwitchPage";
+import { TwitterFeed } from "../SocialComponent/TwitterFeed";
 import { YouTubeList } from "../SocialComponent/YouTubeList";
 
-const { Title } = Typography;
+const { Title, Paragraph: P } = Typography;
 
 export const ProfilePage = () => {
   const navigate = useNavigate();
@@ -15,7 +26,7 @@ export const ProfilePage = () => {
   const { username } = useParams();
   const user = getUser(username ?? "");
 
-  const { youtube } = user?.socials ?? {};
+  const { youtube, twitter, twitch } = user?.socials ?? {};
   const [youtubeChannelData, setYouTubeChannelData] = React.useState<
     YoutubeChannel | undefined
   >();
@@ -44,24 +55,63 @@ export const ProfilePage = () => {
         setPlaylistItems(videos);
       });
     }
-  }, [username, user]);
+  }, [username, user, youtube]);
 
   if (!username || !user) {
     navigate("/members");
     return null;
   }
 
+  console.log(youtubeChannelData);
+
+  const description =
+    user.description ?? youtubeChannelData?.snippet.description;
+
+  const Badges = <SocialBadges {...user.socials} />;
+
   return (
     <div>
-      <Title level={2}>{username}</Title>
-      {youtubeChannelData && (
-        <img
-          // @ts-ignore - externalUrl is all that is returned on request. Incorrect types in youtube.ts?
-          src={youtubeChannelData.brandingSettings.image.bannerExternalUrl}
-          alt="banner"
-        />
-      )}
-      {youtube && <YouTubeList playlistItems={playlistItems} />}
+      <Row gutter={16} wrap>
+        {youtube && (
+          <Col span={4} style={{ alignContent: "center" }}>
+            <Avatar
+              style={{ width: "100%", height: "100%" }}
+              src={youtubeChannelData?.snippet.thumbnails.high.url}
+            />
+          </Col>
+        )}
+
+        <Col span={16}>
+          <Space align="center">
+            <Title style={{ margin: 0 }}>{username}</Title>
+            {Badges}
+          </Space>
+          {description && <P>{description}</P>}
+        </Col>
+      </Row>
+
+      <Row gutter={16} wrap>
+        {youtube && (
+          <Col span={8}>
+            <Divider>Latest Videos</Divider>
+            <YouTubeList playlistItems={playlistItems} />
+          </Col>
+        )}
+
+        {twitch && (
+          <Col span={8}>
+            <Divider>Latest Streams</Divider>
+            <TwitchPage channel={twitch.id} />
+          </Col>
+        )}
+
+        {twitter && (
+          <Col span={8}>
+            <Divider>Latest Tweets</Divider>
+            <TwitterFeed screenName={twitter.id} />
+          </Col>
+        )}
+      </Row>
     </div>
   );
 };

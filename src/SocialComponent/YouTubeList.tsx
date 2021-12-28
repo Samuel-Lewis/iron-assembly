@@ -8,9 +8,7 @@ export type YouTubeListProps = {
   playlistItems: VideoWithChannel[];
 };
 
-export const YouTubeList: React.FunctionComponent<YouTubeListProps> = ({
-  playlistItems,
-}) => {
+export const YouTubeList: React.FC<YouTubeListProps> = ({ playlistItems }) => {
   const VideoList = (
     <List
       loading={playlistItems.length === 0}

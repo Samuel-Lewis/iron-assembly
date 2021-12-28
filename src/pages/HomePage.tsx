@@ -1,8 +1,7 @@
 import { Carousel, Divider, Space, Typography } from "antd";
 import React, { useEffect } from "react";
-import { fetchChannelData, fetchLatestVideos } from "../content/youtube";
+import { fetchLatestVideos } from "../content/youtube";
 import { YouTubeCard } from "../SocialComponent/YouTubeCard";
-import { users } from "../content";
 import type { VideoWithChannel } from "../content/youtube/types";
 
 const { Title } = Typography;

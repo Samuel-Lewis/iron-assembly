@@ -6,6 +6,7 @@ export type User = {
   username: string;
   active: boolean;
   socials?: { [key: string]: SocialLink };
+  description?: string;
 };
 
 export const users: User[] = [
@@ -46,6 +47,8 @@ export const users: User[] = [
     socials: {
       minecraft: { id: "1873c79d-c48c-418a-9b02-3114ed338b9a" },
       youtube: { id: "UCn6dT3-it_j7uJ2ZUXmBqJQ" },
+      twitch: { id: "coconut_beast" },
+      instagram: { id: "the_coconut_beast" },
     },
   },
   {
@@ -54,6 +57,7 @@ export const users: User[] = [
     socials: {
       minecraft: { id: "af3edba7-94f4-494b-8235-16f727ccadab" },
       youtube: { id: "UCJ13xqeoVJJtd7r5pb8myJg" },
+      twitch: { id: "darrix2364" },
     },
   },
   {
