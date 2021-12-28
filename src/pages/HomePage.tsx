@@ -1,4 +1,4 @@
-import { Carousel, Divider, Space, Typography } from "antd";
+import { Carousel, Space, Typography } from "antd";
 import React, { useEffect } from "react";
 import { fetchLatestVideos } from "../content/youtube";
 import { YouTubeCard } from "../SocialComponent/YouTubeCard";
@@ -23,12 +23,10 @@ export const HomePage = () => {
   return (
     <div className="homepage">
       <Title>Iron Assembly</Title>
-      <Divider orientation="left">Latest Videos</Divider>
-      <div style={{ width: "534px" }}>
-        <Carousel autoplay>{carouselItems}</Carousel>
-      </div>
-      <Divider orientation="left">Socials</Divider>
-      <Space direction="horizontal" wrap>
+      <Space wrap align="start">
+        <div style={{ width: "534px" }}>
+          <Carousel autoplay>{carouselItems}</Carousel>
+        </div>
         <iframe
           title="Discord widget"
           src="https://discord.com/widget?id=913327234733973555&theme=dark"

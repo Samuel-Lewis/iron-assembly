@@ -15,5 +15,5 @@ export const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
   const image = thumbnails.maxres || thumbnails.high;
   const link = image.url;
 
-  return <img width={width} alt={alt} src={link} className="video-thumbnail" />;
+  return <img className="video-thumbnail" width={width} alt={alt} src={link} />;
 };

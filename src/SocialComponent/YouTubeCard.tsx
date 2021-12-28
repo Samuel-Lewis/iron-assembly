@@ -1,9 +1,10 @@
-import { Card, Avatar } from "antd";
+import { Card, Avatar, Typography } from "antd";
 import React from "react";
 import type { YoutubePlaylistItem, YoutubeChannel } from "youtube.ts";
 import { VideoThumbnail } from "./VideoThumbnail";
 
 const { Meta } = Card;
+const { Paragraph: P } = Typography;
 
 export type YouTubeCardProps = {
   video: YoutubePlaylistItem;
@@ -18,13 +19,10 @@ export const YouTubeCard: React.FC<YouTubeCardProps> = ({ video, channel }) => {
 
   return (
     <a href={link} target="_blank" rel="noopener noreferrer">
-      <Card
-        className="youtube-card-details"
-        cover={<VideoThumbnail alt={title} thumbnails={thumbnails} />}
-      >
+      <Card cover={<VideoThumbnail alt={title} thumbnails={thumbnails} />}>
         <Meta
           title={title}
-          description={description}
+          description={<P ellipsis={{ rows: 3 }}>{description}</P>}
           avatar={avatar ? <Avatar src={avatar} /> : undefined}
         />
       </Card>
