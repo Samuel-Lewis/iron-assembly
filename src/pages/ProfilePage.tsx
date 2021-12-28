@@ -1,12 +1,4 @@
-import {
-  notification,
-  Typography,
-  Divider,
-  Row,
-  Col,
-  Avatar,
-  Space,
-} from "antd";
+import { notification, Typography, Divider, Row, Col, Space } from "antd";
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { YoutubeChannel } from "youtube.ts";

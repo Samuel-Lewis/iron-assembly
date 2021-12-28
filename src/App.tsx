@@ -1,13 +1,7 @@
 import "./App.less";
-import {
-  Layout,
-  Menu
-} from "antd";
+import { Layout, Menu } from "antd";
 import React from "react";
-import {
-  Link,
-  Outlet
-} from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import ReactGA from "react-ga4";
 
 const { Header, Content, Footer } = Layout;
@@ -25,7 +19,7 @@ function App() {
         <Link to="/">
           <img
             className="logo"
-            src={`${process.env.PUBLIC_URL}/forge_cutout.png`}
+            src={`${process.env.PUBLIC_URL}/images/forge_cutout.png`}
             alt=""
           />
         </Link>
