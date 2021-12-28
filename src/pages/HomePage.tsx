@@ -1,26 +1,24 @@
-import {
-  Carousel,
-  Divider,
-  Space,
-  Typography
-} from "antd";
+import { Carousel, Divider, Space, Typography } from "antd";
 import React, { useEffect } from "react";
-import { fetchLatestVideos } from "../content/youtube";
-import { YouTubeVideo } from "../content/youtube/types";
+import { fetchChannelData, fetchLatestVideos } from "../content/youtube";
 import { YouTubeCard } from "../SocialComponent/YouTubeCard";
+import { users } from "../content";
+import type { VideoWithChannel } from "../content/youtube/types";
 
 const { Title } = Typography;
 
 export const HomePage = () => {
-  const [latestVideos, setLatestVideos] = React.useState<YouTubeVideo[]>([]);
+  const [latestVideos, setLatestVideos] = React.useState<VideoWithChannel[]>(
+    []
+  );
   useEffect(() => {
     fetchLatestVideos({ maxResults: 5 }).then((videos) => {
       setLatestVideos(videos);
     });
   }, [setLatestVideos]);
 
-  const carouselItems = latestVideos.map((video) => (
-    <YouTubeCard video={video} key={video.title} />
+  const carouselItems = latestVideos.map((vcd) => (
+    <YouTubeCard video={vcd.video} channel={vcd.channel} key={vcd.video.id} />
   ));
 
   return (

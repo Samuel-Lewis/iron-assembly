@@ -8,8 +8,15 @@ import {
   Link,
   Outlet
 } from "react-router-dom";
+import ReactGA from "react-ga4";
 
 const { Header, Content, Footer } = Layout;
+
+try {
+  ReactGA.initialize(process.env.REACT_APP_GA_ID || "");
+} catch (err) {
+  console.error("GA initialization failed", err);
+}
 
 function App() {
   return (

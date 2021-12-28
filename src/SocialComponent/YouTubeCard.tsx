@@ -1,21 +1,32 @@
-import { Card } from "antd";
+import { Card, Avatar } from "antd";
 import React from "react";
-import { YouTubeVideo } from "../content/youtube/types";
+import type { YoutubePlaylistItem, YoutubeChannel } from "youtube.ts";
+import { VideoThumbnail } from "./VideoThumbnail";
 
 const { Meta } = Card;
 
 export type YouTubeCardProps = {
-  video: YouTubeVideo;
+  video: YoutubePlaylistItem;
+  channel?: YoutubeChannel;
 };
 
-export const YouTubeCard: React.FC<YouTubeCardProps> = ({ video }) => {
+export const YouTubeCard: React.FC<YouTubeCardProps> = ({ video, channel }) => {
+  const { title, description, thumbnails, channelTitle } = video.snippet;
+
+  const link = `https://www.youtube.com/watch?v=${video.contentDetails.videoId}`;
+  const avatar = channel?.snippet.thumbnails.high.url;
+
   return (
-    <a href={video.link} target="_blank" rel="noopener noreferrer">
+    <a href={link} target="_blank" rel="noopener noreferrer">
       <Card
         className="youtube-card-details"
-        cover={<img src={video.thumbnail} alt={video.title} />}
+        cover={<VideoThumbnail alt={title} thumbnails={thumbnails} />}
       >
-        <Meta title={video.title} description={video.author} />
+        <Meta
+          title={title}
+          description={description}
+          avatar={avatar ? <Avatar src={avatar} /> : undefined}
+        />
       </Card>
     </a>
   );

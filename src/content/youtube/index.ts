@@ -1,61 +1,64 @@
-import axios from "axios";
-import Cache from "cache";
 import { getIdsBySocial } from "../members";
-import {
-  LatestVideosOptions,
-  YouTubeData
-} from "./types";
+import { LatestVideosOptions, VideoWithChannel } from "./types";
+import mem from "mem";
+import YouTube from "youtube.ts";
 
-const youtubeCache = new Cache(10 * 60 * 1000); // 10 minutes TTL
+const youtube = new YouTube(process.env.REACT_APP_GOOGLE_API_KEY);
 
-const youtubeUrl = "https://www.youtube.com/feeds/videos.xml?channel_id=";
-const rss2jsonUrl = "https://api.rss2json.com/v1/api.json";
+export const getUploadPlaylistId = mem(
+  async (channelId: string) => {
+    const channelData = await fetchChannelData(channelId);
+    return channelData.contentDetails.relatedPlaylists.uploads;
+  },
+  { maxAge: 10 * 60 * 1000 } // 10 minutes
+);
 
-export const fetchChannelData = async (
-  channelId: string
-): Promise<YouTubeData> => {
-  const cacheData = youtubeCache.get(channelId);
-  if (cacheData) {
-    return cacheData;
-  }
+export const getPlaylistContent = mem(
+  async (playlistId: string) => {
+    return (
+      await youtube.playlists.items(
+        `https://www.youtube.com/playlist?list=${playlistId}`
+      )
+    ).items;
+  },
+  { maxAge: 10 * 60 * 1000 } // 10 minutes
+);
 
-  const response = await axios.get(rss2jsonUrl, {
-    params: {
-      rss_url: youtubeUrl + channelId,
-    },
-  });
+export const fetchChannelData = mem(
+  async (channelId: string) => {
+    const channel = await youtube.channels.get(
+      `https://www.youtube.com/channel/${channelId}`
+    );
 
-  const data = response.data as YouTubeData;
-  const timeZoneOffset = new Date().getTimezoneOffset() * 60 * 1000;
-  data.items.forEach((item, i, arr) => {
-    // Date processing
-    const date = Number(new Date(item.pubDate)) - timeZoneOffset;
-    arr[i].pubDate = new Date(date);
-
-    // Thumbnail processing
-    arr[i].thumbnail = item.thumbnail.replace("hqdefault", "maxresdefault");
-  });
-
-  youtubeCache.put(channelId, data);
-  console.log(data);
-  return data;
-};
+    return channel;
+  },
+  { maxAge: 10 * 60 * 1000 } // 10 minutes
+);
 
 export const fetchLatestVideos = async ({
   maxResults,
-  channelIds = [],
-}: LatestVideosOptions) => {
-  const ids = channelIds.length > 0 ? channelIds : getIdsBySocial("youtube");
-  const requests = await Promise.all(ids.map(fetchChannelData));
-  const sorted = requests
-    .map((channel) => channel.items)
+  channelIds,
+}: LatestVideosOptions): Promise<VideoWithChannel[]> => {
+  const ids = channelIds ?? getIdsBySocial("youtube");
+
+  const playlistIds = await Promise.all(ids.map(getUploadPlaylistId));
+  const videos = (await Promise.all(playlistIds.map(getPlaylistContent)))
     .flat()
     .sort((a, b) => {
-      return Number(new Date(b.pubDate)) - Number(new Date(a.pubDate));
-    });
+      return (
+        new Date(b.snippet.publishedAt).getTime() -
+        new Date(a.snippet.publishedAt).getTime()
+      );
+    })
+    .slice(0, maxResults);
 
-  if (maxResults) {
-    return sorted.slice(0, maxResults);
-  }
-  return sorted;
+  return await Promise.all(
+    videos.map(async (video) => {
+      const channel = await fetchChannelData(video.snippet.channelId);
+      return {
+        video,
+        channel,
+      };
+    })
+  );
 };
