@@ -24,10 +24,8 @@ export const HomePage = () => {
     <div className="homepage">
       <Title>Iron Assembly</Title>
       <Divider orientation="left">Latest Videos</Divider>
-      <div style={{ width: "534px" }} className="video-carousel">
-        <Carousel autoplay dots={{ className: "carousel-dots" }}>
-          {carouselItems}
-        </Carousel>
+      <div style={{ width: "534px" }}>
+        <Carousel autoplay>{carouselItems}</Carousel>
       </div>
       <Divider orientation="left">Socials</Divider>
       <Space direction="horizontal" wrap>

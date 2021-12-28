@@ -26,7 +26,6 @@ export const ProfilePage = () => {
   const { username } = useParams();
   const user = getUser(username ?? "");
 
-  const { youtube, twitter, twitch } = user?.socials ?? {};
   const [youtubeChannelData, setYouTubeChannelData] = React.useState<
     YoutubeChannel | undefined
   >();
@@ -46,6 +45,8 @@ export const ProfilePage = () => {
       return;
     }
 
+    const { youtube } = user.socials;
+
     if (youtube) {
       const channelId = youtube.id;
       fetchChannelData(channelId).then((channel) => {
@@ -55,14 +56,14 @@ export const ProfilePage = () => {
         setPlaylistItems(videos);
       });
     }
-  }, [username, user, youtube]);
+  }, [username, user]);
 
   if (!username || !user) {
     navigate("/members");
     return null;
   }
 
-  console.log(youtubeChannelData);
+  const { youtube, twitter, twitch } = user.socials;
 
   const description =
     user.description ?? youtubeChannelData?.snippet.description;
@@ -73,10 +74,12 @@ export const ProfilePage = () => {
     <div>
       <Row gutter={16} wrap>
         {youtube && (
-          <Col span={4} style={{ alignContent: "center" }}>
-            <Avatar
-              style={{ width: "100%", height: "100%" }}
+          <Col span={4} className="center">
+            <img
               src={youtubeChannelData?.snippet.thumbnails.high.url}
+              alt=""
+              height="100%"
+              width="100%"
             />
           </Col>
         )}
