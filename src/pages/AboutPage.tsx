@@ -31,8 +31,8 @@ export const AboutPage: React.FC = () => {
       <P>
         Currently the Minecraft SMP has a whitelist and is not accepting new
         players. If you're really keen on getting involved, join the{" "}
-        <A href="https://discord.com/invite/xpCGZevjVc">Discord</A> and get in
-        say Hi!
+        <A href="https://discord.com/invite/xpCGZevjVc">Discord</A> and come
+        say hi!
       </P>
       <P>
         <A href={process.env.PUBLIC_URL}>ironassembly.com</A> is maintained by
