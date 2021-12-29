@@ -6,7 +6,7 @@ import Avatar from "antd/lib/avatar/avatar";
 
 const { Title, Paragraph: P } = Typography;
 
-export const MembersPage = () => {
+export const MembersPage: React.FC = () => {
   const creators = users
     .filter((u) => u.creator)
     .sort((a, b) => a.username.localeCompare(b.username))

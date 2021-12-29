@@ -12,7 +12,7 @@ import { YouTubeList } from "../SocialComponent/YouTubeList";
 
 const { Title, Paragraph: P } = Typography;
 
-export const ProfilePage = () => {
+export const ProfilePage: React.FC = () => {
   const navigate = useNavigate();
 
   const { username } = useParams();
@@ -72,11 +72,12 @@ export const ProfilePage = () => {
               alt=""
               height="100%"
               width="100%"
+              className="profile-image"
             />
           </Col>
         )}
 
-        <Col span={16}>
+        <Col span={20}>
           <Space align="center">
             <Title style={{ margin: 0 }}>{username}</Title>
             {Badges}
@@ -87,21 +88,21 @@ export const ProfilePage = () => {
 
       <Row gutter={16} wrap>
         {youtube && (
-          <Col span={8}>
+          <Col lg={8} md={12} sm={24}>
             <Divider>Latest Videos</Divider>
             <YouTubeList playlistItems={playlistItems} />
           </Col>
         )}
 
         {twitch && (
-          <Col span={8}>
+          <Col lg={8} md={12} sm={24}>
             <Divider>Latest Streams</Divider>
             <TwitchPage channel={twitch.id} />
           </Col>
         )}
 
         {twitter && (
-          <Col span={8}>
+          <Col lg={8} md={12} sm={24}>
             <Divider>Latest Tweets</Divider>
             <TwitterFeed screenName={twitter.id} />
           </Col>

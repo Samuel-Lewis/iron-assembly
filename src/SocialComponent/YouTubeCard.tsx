@@ -12,20 +12,38 @@ export type YouTubeCardProps = {
 };
 
 export const YouTubeCard: React.FC<YouTubeCardProps> = ({ video, channel }) => {
-  const { title, description, thumbnails } = video.snippet;
+  const { title, description, thumbnails, channelTitle } = video.snippet;
 
   const link = `https://www.youtube.com/watch?v=${video.contentDetails.videoId}`;
   const avatar = channel?.snippet.thumbnails.high.url;
 
   return (
-    <a href={link} target="_blank" rel="noopener noreferrer">
-      <Card cover={<VideoThumbnail alt={title} thumbnails={thumbnails} />}>
-        <Meta
-          title={title}
-          description={<P ellipsis={{ rows: 3 }}>{description}</P>}
-          avatar={avatar ? <Avatar src={avatar} /> : undefined}
+    <Card
+      cover={
+        <VideoThumbnail
+          alt={title}
+          thumbnails={thumbnails}
+          link={link}
+          isCover
         />
-      </Card>
-    </a>
+      }
+    >
+      <Meta
+        title={
+          <a href={link} target="_blank" rel="noopener noreferrer">
+            {title}
+          </a>
+        }
+        description={
+          <>
+            <P italic>{channelTitle}</P>
+            <P type="secondary" ellipsis={{ rows: 3 }}>
+              {description}
+            </P>
+          </>
+        }
+        avatar={avatar ? <Avatar src={avatar} /> : undefined}
+      />
+    </Card>
   );
 };

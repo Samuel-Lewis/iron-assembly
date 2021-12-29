@@ -9,38 +9,38 @@ export type YouTubeListProps = {
 };
 
 export const YouTubeList: React.FC<YouTubeListProps> = ({ playlistItems }) => {
-  const VideoList = (
-    <List
-      loading={playlistItems.length === 0}
-      dataSource={playlistItems}
-      itemLayout="horizontal"
-      renderItem={({ video, channel }) => {
-        const link = `https://www.youtube.com/watch?v=${video.contentDetails.videoId}`;
-        return (
-          <List.Item
-            key={video.id}
-            extra={
-              <a href={link} rel="noopener noreferrer" target="_blank">
+  return (
+    <div className="youtube-list">
+      <List
+        loading={playlistItems.length === 0}
+        dataSource={playlistItems}
+        itemLayout="horizontal"
+        renderItem={({ video }) => {
+          const link = `https://www.youtube.com/watch?v=${video.contentDetails.videoId}`;
+          return (
+            <List.Item
+              key={video.id}
+              extra={
                 <VideoThumbnail
                   width={200}
                   alt={video.snippet.title}
                   thumbnails={video.snippet.thumbnails}
+                  link={link}
                 />
-              </a>
-            }
-          >
-            <List.Item.Meta
-              title={
-                <a href={link} rel="noopener noreferrer" target="_blank">
-                  {video.snippet.title}
-                </a>
               }
-              description={dateFormat(video.snippet.publishedAt)}
-            />
-          </List.Item>
-        );
-      }}
-    />
+            >
+              <List.Item.Meta
+                title={
+                  <a href={link} rel="noopener noreferrer" target="_blank">
+                    {video.snippet.title}
+                  </a>
+                }
+                description={dateFormat(video.snippet.publishedAt)}
+              />
+            </List.Item>
+          );
+        }}
+      />
+    </div>
   );
-  return <div>{VideoList}</div>;
 };

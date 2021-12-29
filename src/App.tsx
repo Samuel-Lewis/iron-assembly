@@ -31,6 +31,9 @@ function App() {
           <Menu.Item key="/">
             <Link to="/">Home</Link>
           </Menu.Item>
+          <Menu.Item key="/about">
+            <Link to="/about">About</Link>
+          </Menu.Item>
           <Menu.Item key="/members">
             <Link to="/members">Members</Link>
           </Menu.Item>

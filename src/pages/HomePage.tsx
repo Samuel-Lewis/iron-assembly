@@ -6,7 +6,7 @@ import type { VideoWithChannel } from "../content/youtube/types";
 
 const { Title } = Typography;
 
-export const HomePage = () => {
+export const HomePage: React.FC = () => {
   const [latestVideos, setLatestVideos] = React.useState<VideoWithChannel[]>(
     []
   );
@@ -21,7 +21,7 @@ export const HomePage = () => {
   ));
 
   return (
-    <div className="homepage">
+    <>
       <Title>Iron Assembly</Title>
       <Space wrap align="start">
         <div style={{ width: "534px" }}>
@@ -36,6 +36,6 @@ export const HomePage = () => {
           sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
         />
       </Space>
-    </div>
+    </>
   );
 };
