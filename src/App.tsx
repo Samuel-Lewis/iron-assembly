@@ -1,6 +1,6 @@
 import "./App.less";
-import { Layout, Menu, message } from "antd";
-import React, { useEffect } from "react";
+import { Layout, Menu } from "antd";
+import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import ReactGA from "react-ga4";
 
@@ -13,10 +13,6 @@ try {
 }
 
 function App() {
-  useEffect(() => {
-    message.warning("This site is a work in progress!", 0);
-  });
-
   return (
     <Layout className="app">
       <Header>
