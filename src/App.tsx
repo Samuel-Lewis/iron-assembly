@@ -34,16 +34,13 @@ function App() {
           <Menu.Item key="/members">
             <Link to="/members">Members</Link>
           </Menu.Item>
-          <Menu.Item key="/about">
-            <Link to="/about">About</Link>
-          </Menu.Item>
         </Menu>
       </Header>
       <Content className="content">
         <Outlet />
       </Content>
 
-      <Footer className="footer">Iron Assembly 2021</Footer>
+      <Footer className="footer">Copyright © 2021 Iron Assembly</Footer>
     </Layout>
   );
 }

@@ -1,1 +1,1 @@
-export { users, getUser } from "./members";
+export { users, getUser, getUserBySocial } from "./members";

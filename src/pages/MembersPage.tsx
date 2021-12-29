@@ -12,7 +12,7 @@ export const MembersPage: React.FC = () => {
     .sort((a, b) => a.username.localeCompare(b.username))
     .map((u) => (
       <Link to={`/members/${u.username}`} key={u.username}>
-        <Space align="center" direction="vertical">
+        <Space align="center" direction="vertical" className="avatar-render">
           <img
             src={`https://crafatar.com/renders/body/${u.socials.minecraft.id}?overlay`}
             alt={u.username}
@@ -45,11 +45,13 @@ export const MembersPage: React.FC = () => {
       <Title>Iron Assembly Members</Title>
       <Divider>Creators</Divider>
       <div className="center">
-        <Space size="large">{creators}</Space>
+        <Space size="large" wrap>
+          {creators}
+        </Space>
       </div>
       <Divider>Players</Divider>
       <div className="center">
-        <Space>{nonCreators}</Space>
+        <Space wrap>{nonCreators}</Space>
       </div>
     </>
   );

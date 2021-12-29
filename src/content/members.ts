@@ -87,6 +87,13 @@ export const getUser = (term: string): User | undefined => {
   return users.find((user) => user.username === term);
 };
 
+export const getUserBySocial = (
+  term: string,
+  social: string
+): User | undefined => {
+  return users.find((user) => user.socials[social]?.id === term);
+};
+
 export const getIdsBySocial = (social: string): string[] => {
   return users.reduce((acc, user) => {
     if (user.socials[social]) {

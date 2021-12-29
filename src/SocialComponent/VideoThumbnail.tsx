@@ -9,15 +9,13 @@ export type VideoThumbnailProps = {
   alt: string;
   width?: number;
   link?: string;
-  isCover?: boolean;
 };
 
 export const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
   thumbnails,
   alt,
-  width,
+  width = 600,
   link = "",
-  isCover = false,
 }) => {
   const image = thumbnails.maxres || thumbnails.high;
   const imageLink = image.url;
@@ -25,9 +23,9 @@ export const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
   return (
     <A href={link}>
       <img
-        className={`video-thumbnail ${isCover ? "cover-content" : ""}`}
-        width={width}
+        className={`video-thumbnail`}
         alt={alt}
+        width={width}
         src={imageLink}
       />
     </A>

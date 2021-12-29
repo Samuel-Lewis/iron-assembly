@@ -15,19 +15,40 @@ export const getUploadPlaylistId = mem(
 
 export const getPlaylistContent = mem(
   async (playlistId: string) => {
-    return (
+    const ls = localStorage.getItem(`youtube-playlist-${playlistId}`);
+    if (ls) {
+      return JSON.parse(ls);
+    }
+
+    const items = (
       await youtube.playlists.items(
         `https://www.youtube.com/playlist?list=${playlistId}`
       )
     ).items;
+
+    localStorage.setItem(
+      `youtube-playlist-${playlistId}`,
+      JSON.stringify(items)
+    );
+    return items;
   },
   { maxAge: 10 * 60 * 1000 } // 10 minutes
 );
 
 export const fetchChannelData = mem(
   async (channelId: string) => {
+    const ls = localStorage.getItem(`youtube-channel-${channelId}`);
+    if (ls) {
+      return JSON.parse(ls);
+    }
+
     const channel = await youtube.channels.get(
       `https://www.youtube.com/channel/${channelId}`
+    );
+
+    localStorage.setItem(
+      `youtube-channel-${channelId}`,
+      JSON.stringify(channel)
     );
 
     return channel;

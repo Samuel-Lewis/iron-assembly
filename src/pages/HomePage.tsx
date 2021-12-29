@@ -1,10 +1,11 @@
-import { Carousel, Space, Typography } from "antd";
+import { Carousel, Divider, Space, Typography } from "antd";
 import React, { useEffect } from "react";
 import { fetchLatestVideos } from "../content/youtube";
 import { YouTubeCard } from "../SocialComponent/YouTubeCard";
 import type { VideoWithChannel } from "../content/youtube/types";
+import { AboutPanel, BisectPanel, DiscordWidget } from "../panels";
 
-const { Title } = Typography;
+const { Paragraph: P } = Typography;
 
 export const HomePage: React.FC = () => {
   const [latestVideos, setLatestVideos] = React.useState<VideoWithChannel[]>(
@@ -22,19 +23,22 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      <Title>Iron Assembly</Title>
-      <Space wrap align="start">
-        <div style={{ width: "534px" }}>
-          <Carousel autoplay>{carouselItems}</Carousel>
-        </div>
-        <iframe
-          title="Discord widget"
-          src="https://discord.com/widget?id=913327234733973555&theme=dark"
-          width="350"
-          height="300"
-          frameBorder="0"
-          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-        />
+      <div className="center">
+        <h1 className="home-title">Iron Assembly</h1>
+        {/* TODO: Add randomly generated catchphrases */}
+        <P type="secondary"></P>{" "}
+      </div>
+      <Divider>Latest Content</Divider>
+      <Carousel autoplay effect="fade" className="center">
+        {carouselItems}
+      </Carousel>
+      <Divider />
+      <AboutPanel />
+      <Divider />
+      <Space wrap style={{ margin: "auto" }}>
+        {/* <DiscordInvite /> */}
+        <DiscordWidget />
+        <BisectPanel />
       </Space>
     </>
   );
