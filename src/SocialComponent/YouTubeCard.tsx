@@ -37,7 +37,7 @@ export const YouTubeCard: React.FC<YouTubeCardProps> = ({ video, channel }) => {
         </span>
 
         <Title level={5}>
-          <A href={link}>{title}</A>
+          <A href={link} rel="noopener noreferrer" target="_blank">{title}</A>
         </Title>
         <P type="secondary" ellipsis={{ rows: 5 }}>
           {description}

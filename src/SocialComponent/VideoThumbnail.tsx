@@ -1,8 +1,6 @@
 import React from "react";
-import { Typography } from "antd";
 import type { YoutubeVideoSnippet } from "youtube.ts";
 
-const { Link: A } = Typography;
 
 export type VideoThumbnailProps = {
   thumbnails: YoutubeVideoSnippet["thumbnails"];
@@ -21,13 +19,13 @@ export const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
   const imageLink = image.url;
 
   return (
-    <A href={link}>
+    <a href={link} rel="noopener noreferrer" target="_blank">
       <img
         className={`video-thumbnail`}
         alt={alt}
         width={width}
         src={imageLink}
       />
-    </A>
+    </a>
   );
 };

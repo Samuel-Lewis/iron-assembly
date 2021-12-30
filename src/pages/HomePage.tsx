@@ -1,11 +1,15 @@
-import { Carousel, Divider, Space, Typography } from "antd";
+import { Carousel, Divider, Space } from "antd";
 import React, { useEffect } from "react";
 import { fetchLatestVideos } from "../content/youtube";
 import { YouTubeCard } from "../SocialComponent/YouTubeCard";
 import type { VideoWithChannel } from "../content/youtube/types";
-import { AboutPanel, BisectPanel, DiscordWidget } from "../panels";
-
-const { Paragraph: P } = Typography;
+import {
+  AboutPanel,
+  BisectPanel,
+  Catchphrase,
+  DiscordWidget,
+  ModpackInfo,
+} from "../panels";
 
 export const HomePage: React.FC = () => {
   const [latestVideos, setLatestVideos] = React.useState<VideoWithChannel[]>(
@@ -25,8 +29,7 @@ export const HomePage: React.FC = () => {
     <>
       <div className="center">
         <h1 className="home-title">Iron Assembly</h1>
-        {/* TODO: Add randomly generated catchphrases */}
-        <P type="secondary"></P>{" "}
+        <Catchphrase />
       </div>
       <Divider>Latest Content</Divider>
       <Carousel autoplay effect="fade" className="center">
@@ -35,11 +38,13 @@ export const HomePage: React.FC = () => {
       <Divider />
       <AboutPanel />
       <Divider />
-      <Space wrap style={{ margin: "auto" }}>
-        {/* <DiscordInvite /> */}
-        <DiscordWidget />
-        <BisectPanel />
-      </Space>
+      <div className="center">
+        <Space wrap size="large" align="start">
+          <ModpackInfo />
+          <BisectPanel />
+          <DiscordWidget />
+        </Space>
+      </div>
     </>
   );
 };
