@@ -1,11 +1,12 @@
-import React from "react";
 import { Tag } from "antd";
+import React from "react";
 import {
-  TwitterOutlined,
-  YoutubeOutlined,
-  CameraOutlined,
-  InstagramOutlined,
+    CameraOutlined,
+    InstagramOutlined,
+    TwitterOutlined,
+    YoutubeOutlined
 } from "@ant-design/icons";
+
 import type { User } from "../content/members";
 
 export type BadgeProps = {

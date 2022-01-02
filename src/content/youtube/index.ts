@@ -1,7 +1,10 @@
-import { getIdsBySocial } from "../members";
-import { LatestVideosOptions, VideoWithChannel } from "./types";
 import mem from "mem";
 import YouTube from "youtube.ts";
+import { getIdsBySocial } from "../members";
+import {
+    LatestVideosOptions,
+    VideoWithChannel
+} from "./types";
 
 const youtube = new YouTube(process.env.REACT_APP_GOOGLE_API_KEY);
 

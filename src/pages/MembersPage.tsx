@@ -1,8 +1,12 @@
+import {
+    Divider,
+    Space,
+    Typography
+} from "antd";
+import Avatar from "antd/lib/avatar/avatar";
 import React from "react";
 import { Link } from "react-router-dom";
 import { users } from "../content";
-import { Divider, Typography, Space } from "antd";
-import Avatar from "antd/lib/avatar/avatar";
 
 const { Title, Paragraph: P } = Typography;
 

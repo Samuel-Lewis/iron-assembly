@@ -1,16 +1,20 @@
-import { Carousel, Divider, Space } from "antd";
+import {
+    Carousel,
+    Divider,
+    Space
+} from "antd";
 import React, { useEffect } from "react";
 import { fetchLatestVideos } from "../content/youtube";
-import { YouTubeCard } from "../SocialComponent/YouTubeCard";
-import type { VideoWithChannel } from "../content/youtube/types";
 import {
-  AboutPanel,
-  BisectPanel,
-  Catchphrase,
-  DiscordWidget,
-  ModpackInfo,
+    AboutPanel,
+    BisectPanel,
+    Catchphrase,
+    DiscordWidget,
+    ModpackInfo
 } from "../panels";
+import { YouTubeCard } from "../SocialComponent/YouTubeCard";
 
+import type { VideoWithChannel } from "../content/youtube/types";
 export const HomePage: React.FC = () => {
   const [latestVideos, setLatestVideos] = React.useState<VideoWithChannel[]>(
     []

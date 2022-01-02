@@ -1,10 +1,14 @@
-import { Avatar, Typography, Space } from "antd";
+import {
+    Avatar,
+    Space,
+    Typography
+} from "antd";
 import React from "react";
-import type { YoutubePlaylistItem, YoutubeChannel } from "youtube.ts";
-import { VideoThumbnail } from "./VideoThumbnail";
 import { Link } from "react-router-dom";
 import { getUserBySocial } from "../content";
+import { VideoThumbnail } from "./VideoThumbnail";
 
+import type { YoutubePlaylistItem, YoutubeChannel } from "youtube.ts";
 const { Paragraph: P, Title, Link: A } = Typography;
 
 export type YouTubeCardProps = {
@@ -32,12 +36,13 @@ export const YouTubeCard: React.FC<YouTubeCardProps> = ({ video, channel }) => {
       <Space direction="vertical" className="youtube-card-details">
         <span>
           <Avatar size="large" src={avatar} />{" "}
-          {/* FIXME: Fix the link to the user */}
           <Link to={`/members/${username}`}>{channelTitle}</Link>
         </span>
 
         <Title level={5}>
-          <A href={link} rel="noopener noreferrer" target="_blank">{title}</A>
+          <A href={link} rel="noopener noreferrer" target="_blank">
+            {title}
+          </A>
         </Title>
         <P type="secondary" ellipsis={{ rows: 5 }}>
           {description}

@@ -1,4 +1,7 @@
-import { Typography, Button } from "antd";
+import {
+    Button,
+    Typography
+} from "antd";
 import React from "react";
 
 const { Paragraph: P } = Typography;

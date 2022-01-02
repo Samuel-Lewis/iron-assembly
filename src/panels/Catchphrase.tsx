@@ -1,5 +1,8 @@
 import { Typography } from "antd";
-import React, { useEffect, useState } from "react";
+import React, {
+    useEffect,
+    useState
+} from "react";
 
 const { Title, Link: A } = Typography;
 

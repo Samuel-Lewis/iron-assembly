@@ -14,7 +14,7 @@
     "react-router-dom": "^6.2.1",
     "react-twitch-embed-video": "^3.0.1",
     "react-twitter-widgets": "^1.10.0",
-    "youtube.ts": "^0.2.3"
+    "youtube.ts": "^0.2.5"
   },
   "devDependencies": {
     "@craco/craco": "^6.4.3",

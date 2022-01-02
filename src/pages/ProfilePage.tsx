@@ -1,9 +1,22 @@
-import { notification, Typography, Divider, Row, Col, Space } from "antd";
+import {
+    Col,
+    Divider,
+    notification,
+    Row,
+    Space,
+    Typography
+} from "antd";
 import React, { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import {
+    useNavigate,
+    useParams
+} from "react-router-dom";
 import { YoutubeChannel } from "youtube.ts";
 import { getUser } from "../content";
-import { fetchChannelData, fetchLatestVideos } from "../content/youtube";
+import {
+    fetchChannelData,
+    fetchLatestVideos
+} from "../content/youtube";
 import { VideoWithChannel } from "../content/youtube/types";
 import { SocialBadges } from "../SocialComponent/SocialBadges";
 import { TwitchPage } from "../SocialComponent/TwitchPage";

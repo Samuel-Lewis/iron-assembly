@@ -1,6 +1,9 @@
-import { Divider, Typography } from "antd";
-import { Link } from "react-router-dom";
+import {
+    Divider,
+    Typography
+} from "antd";
 import React from "react";
+import { Link } from "react-router-dom";
 import { HeadsPanel } from "./HeadsPanel";
 
 const { Title, Paragraph: P, Link: A } = Typography;
@@ -22,13 +25,26 @@ export const AboutPanel: React.FC = () => {
         <P>
           Currently the Minecraft SMP has a whitelist and is not accepting new
           players. If you're really keen on getting involved, join the{" "}
-          <A href="https://discord.com/invite/xpCGZevjVc" rel="noopener noreferrer" target="_blank">Discord</A> and come
-          say hi!
+          <A
+            href="https://discord.com/invite/xpCGZevjVc"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Discord
+          </A>{" "}
+          and come say hi!
         </P>
         <P>
           <A href={process.env.PUBLIC_URL}>ironassembly.com</A> is maintained by
           Veeq, so reach out if there are any issues. Thank you to{" "}
-          <A href="https://crafatar.com" rel="noopener noreferrer" target="_blank">Crafatar</A> for providing avatars.
+          <A
+            href="https://crafatar.com"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Crafatar
+          </A>{" "}
+          for providing avatars.
         </P>
       </div>
     </div>

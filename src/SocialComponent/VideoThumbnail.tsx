@@ -1,6 +1,6 @@
 import React from "react";
-import type { YoutubeVideoSnippet } from "youtube.ts";
 
+import type { YoutubeVideoSnippet } from "youtube.ts";
 
 export type VideoThumbnailProps = {
   thumbnails: YoutubeVideoSnippet["thumbnails"];
