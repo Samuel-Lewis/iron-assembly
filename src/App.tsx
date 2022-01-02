@@ -1,8 +1,14 @@
 import "./App.less";
-import { Layout, Menu } from "antd";
+import {
+    Layout,
+    Menu
+} from "antd";
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
 import ReactGA from "react-ga4";
+import {
+    Link,
+    Outlet
+} from "react-router-dom";
 
 const { Header, Content, Footer } = Layout;
 
@@ -29,6 +35,9 @@ function App() {
           </Menu.Item>
           <Menu.Item key="/members">
             <Link to="/members">Members</Link>
+          </Menu.Item>
+          <Menu.Item key="/gallery">
+            <Link to="/gallery">Gallery</Link>
           </Menu.Item>
         </Menu>
       </Header>
