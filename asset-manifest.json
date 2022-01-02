@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/static/css/main.9cc5157f.chunk.css",
-    "main.js": "/static/js/main.4f8ac910.chunk.js",
-    "main.js.map": "/static/js/main.4f8ac910.chunk.js.map",
+    "main.js": "/static/js/main.1ff23daa.chunk.js",
+    "main.js.map": "/static/js/main.1ff23daa.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.cbaa4794.js",
     "runtime-main.js.map": "/static/js/runtime-main.cbaa4794.js.map",
-    "static/js/2.d92d67ec.chunk.js": "/static/js/2.d92d67ec.chunk.js",
-    "static/js/2.d92d67ec.chunk.js.map": "/static/js/2.d92d67ec.chunk.js.map",
+    "static/js/2.0bae6b2d.chunk.js": "/static/js/2.0bae6b2d.chunk.js",
+    "static/js/2.0bae6b2d.chunk.js.map": "/static/js/2.0bae6b2d.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.9cc5157f.chunk.css.map": "/static/css/main.9cc5157f.chunk.css.map",
-    "static/js/2.d92d67ec.chunk.js.LICENSE.txt": "/static/js/2.d92d67ec.chunk.js.LICENSE.txt",
+    "static/js/2.0bae6b2d.chunk.js.LICENSE.txt": "/static/js/2.0bae6b2d.chunk.js.LICENSE.txt",
     "static/media/App.less": "/static/media/bright-squares.79000482.png"
   },
   "entrypoints": [
     "static/js/runtime-main.cbaa4794.js",
-    "static/js/2.d92d67ec.chunk.js",
+    "static/js/2.0bae6b2d.chunk.js",
     "static/css/main.9cc5157f.chunk.css",
-    "static/js/main.4f8ac910.chunk.js"
+    "static/js/main.1ff23daa.chunk.js"
   ]
 }
