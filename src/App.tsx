@@ -9,6 +9,7 @@ import {
     Link,
     Outlet
 } from "react-router-dom";
+import { withLocation } from './pages/withLocation';
 
 const { Header, Content, Footer } = Layout;
 
@@ -18,7 +19,7 @@ try {
   console.error("GA initialization failed", err);
 }
 
-function App() {
+const App: React.FC = () => {
   return (
     <Layout className="app">
       <Header>
@@ -48,6 +49,6 @@ function App() {
       <Footer className="footer">Copyright © 2021 Iron Assembly</Footer>
     </Layout>
   );
-}
+};
 
-export default App;
+export default withLocation(App);
