@@ -21,7 +21,7 @@ export const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
   return (
     <a href={link} rel="noopener noreferrer" target="_blank">
       <img
-        className={`video-thumbnail`}
+        className="video-thumbnail"
         alt={alt}
         width={width}
         src={imageLink}
