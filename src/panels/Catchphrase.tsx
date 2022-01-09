@@ -7,9 +7,11 @@ import React, {
 const { Title, Link: A } = Typography;
 
 const phrases = [
-  "Cowabunga babyyyy!!",
+  'Coconut_Beast earned the achievement "Ride a Boat into the Void"',
+  "Cowabunga dude!!",
   "Done is better than perfect",
   "Have you got council approval for that?",
+  "I like to peek only if you like to peek",
   "I'm having an identity crisis, but also, here's a chicken",
   "It's for CONTENT",
   "It's just a prank bro",
@@ -19,6 +21,7 @@ const phrases = [
   "Ocelots are like crisps. You can never just have one.",
   "One like = one more waffle in my tummy",
   "Paddington 2 is the Citizen Kane of our time",
+  "Pop a pearrlll",
   "Procrastination is just another way to waste time",
   "So I did some mining off camera...",
   "The factory must grow",

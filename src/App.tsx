@@ -4,20 +4,18 @@ import {
     Menu
 } from "antd";
 import React from "react";
-import ReactGA from "react-ga4";
 import {
     Link,
     Outlet
 } from "react-router-dom";
-import { withLocation } from './pages/withLocation';
+import {
+    initAnalytics,
+    withLocation
+} from "./analytics";
 
 const { Header, Content, Footer } = Layout;
 
-try {
-  ReactGA.initialize(process.env.REACT_APP_GA_ID || "");
-} catch (err) {
-  console.error("GA initialization failed", err);
-}
+initAnalytics();
 
 const App: React.FC = () => {
   return (
